@@ -65,3 +65,34 @@ for (let index = 1; index < palleteElement.length; index += 1) {
     palleteElement[index].style.backgroundColor = rgb;
 }
 
+//Requisito 6 e 7
+const addBoard = document.getElementById('table');
+let size = 5;
+const pixelBoard = document.createElement('div');
+addBoard.appendChild(pixelBoard);
+pixelBoard.id = 'pixel-board';
+pixelBoard.style.backgroundColor = 'white';
+pixelBoard.style.width = '210px';
+pixelBoard.style.height = '210px';
+pixelBoard.style.margin = '0 auto';
+pixelBoard.style.border = '1px solid black';
+
+
+for (let index = 0; index < size; index += 1) {
+    const line = document.createElement('div');
+    pixelBoard.appendChild(line);
+    line.id = 'line';
+    line.style.width = '100%';
+    line.style.height = '42px';
+    for (let index2 = 0; index2 < size; index2 += 1) {
+        const pixel = document.createElement('div');
+        line.appendChild(pixel);
+        pixel.className = 'pixel';
+        pixel.style.width = '40px';
+        pixel.style.height = '40px';
+        pixel.style.border = '1px solid black';
+        pixel.style.display = 'inline-block';
+        pixel.style.backgroundColor = 'white';
+    }
+}
+
