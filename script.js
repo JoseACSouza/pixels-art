@@ -43,12 +43,12 @@ palleteElement[0].style.backgroundColor = 'black';
 
 //Requisito 4
 const buttons = document.getElementById('buttons');
-buttons.style.width='15%';
-buttons.style.margin='12px auto';
+buttons.style.width = '15%';
+buttons.style.margin = '12px auto';
 const buttonRandomColor = document.createElement('button');
 buttonRandomColor.id = 'button-random-color';
 buttonRandomColor.innerHTML = 'Cores aleatórias';
-buttonRandomColor.style.marginRight ='10%';
+buttonRandomColor.style.marginRight = '10%';
 buttons.appendChild(buttonRandomColor);
 buttonRandomColor.addEventListener('click', () => {
     for (let index = 1; index < palleteElement.length; index += 1) {
@@ -101,31 +101,31 @@ const initialColor = document.getElementsByClassName('color')[0];
 initialColor.classList.add('selected');
 
 //Requisito 9
-for(let index = 0; index < palleteElement.length; index+=1){
-    palleteElement[index].addEventListener('click', (target)=>{
-        if(target.path[0].classList.length == 2){
+for (let index = 0; index < palleteElement.length; index += 1) {
+    palleteElement[index].addEventListener('click', (target) => {
+        if (target.path[0].classList.length == 2) {
             target.path[0].classList.remove('selected');
         } else {
-        for (let index2 = 0; index2 < palleteElement.length; index2+=1){
-            palleteElement[index2].classList.remove('selected');
-        }
+            for (let index2 = 0; index2 < palleteElement.length; index2 += 1) {
+                palleteElement[index2].classList.remove('selected');
+            }
             target.path[0].classList.add('selected');
-        
-    }
-})
+
+        }
+    })
 }
 
 // Requisito 10
 const pixel = document.getElementsByClassName('pixel');
-for(let index = 0; index < pixel.length; index+=1){
-    pixel[index].addEventListener('click', (target)=>{
+for (let index = 0; index < pixel.length; index += 1) {
+    pixel[index].addEventListener('click', (target) => {
         const selectedColor = document.getElementsByClassName('selected');
-        if((target.path[0].style.backgroundColor === 'white')&&(selectedColor.length != 0)){
+        if ((target.path[0].style.backgroundColor === 'white') && (selectedColor.length != 0)) {
             target.path[0].style.backgroundColor = selectedColor[0].style.backgroundColor;
-        }else if (selectedColor.length == 0){
+        } else if (selectedColor.length == 0) {
             target.path[0].style.backgroundColor = 'white';
-        } 
-        else {target.path[0].style.backgroundColor = selectedColor[0].style.backgroundColor;}
+        }
+        else { target.path[0].style.backgroundColor = selectedColor[0].style.backgroundColor; }
         attPixelBoard();
     })
 }
@@ -136,26 +136,26 @@ const buttonClear = document.createElement('button');
 buttonClear.id = 'clear-board';
 buttonClear.innerHTML = 'Limpar';
 buttons.appendChild(buttonClear);
-    buttonClear.addEventListener('click', (target)=>{
-        for(let index = 0; index < pixel.length; index+=1){    
+buttonClear.addEventListener('click', (target) => {
+    for (let index = 0; index < pixel.length; index += 1) {
         pixel[index].style.backgroundColor = 'white';
         attPixelBoard();
 
-    }})
-
+    }
+})
 
 //Requisito 12
 const saveBoard = document.getElementsByClassName('pixel');
 
 const attPixelBoard = () => {
-const pixelSaved =[];    
-    for(let index = 0; index < saveBoard.length; index+=1){
+    const pixelSaved = [];
+    for (let index = 0; index < saveBoard.length; index += 1) {
         pixelSaved.push(saveBoard[index].style.backgroundColor);
     }
-localStorage.setItem('pixelBoard', JSON.stringify(pixelSaved));
+    localStorage.setItem('pixelBoard', JSON.stringify(pixelSaved));
 }
 
 
-for(let index = 0; index < saveBoard.length; index+=1){
+for (let index = 0; index < saveBoard.length; index += 1) {
     saveBoard[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index];
 }
