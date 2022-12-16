@@ -99,3 +99,18 @@ for (let index = 0; index < size; index += 1) {
 //Requisito 8
 const initialColor = document.getElementsByClassName('color')[0];
 initialColor.classList.add('selected');
+
+//Requisito 9
+for(let index = 0; index < palleteElement.length; index+=1){
+    palleteElement[index].addEventListener('click', (target)=>{
+        if(target.path[0].classList.length == 2){
+            target.path[0].classList.remove('selected');
+        } else {
+        for (let index2 = 0; index2 < palleteElement.length; index2+=1){
+            palleteElement[index2].classList.remove('selected');
+        }
+            target.path[0].classList.add('selected');
+        
+    }
+})
+}
