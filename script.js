@@ -37,3 +37,6 @@ palleteElement[2].style.backgroundColor = 'yellow';
 palleteElement[3].style.backgroundColor = 'red';
 
 
+//Requisito 3
+palleteElement[0].style.backgroundColor = 'black';
+
