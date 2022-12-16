@@ -143,3 +143,19 @@ buttons.appendChild(buttonClear);
 
     }})
 
+
+//Requisito 12
+const saveBoard = document.getElementsByClassName('pixel');
+
+const attPixelBoard = () => {
+const pixelSaved =[];    
+    for(let index = 0; index < saveBoard.length; index+=1){
+        pixelSaved.push(saveBoard[index].style.backgroundColor);
+    }
+localStorage.setItem('pixelBoard', JSON.stringify(pixelSaved));
+}
+
+
+for(let index = 0; index < saveBoard.length; index+=1){
+    saveBoard[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index];
+}
