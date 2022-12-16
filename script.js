@@ -58,3 +58,10 @@ buttonRandomColor.addEventListener('click', () => {
     }
 })
 
+
+//Requisito 5
+for (let index = 1; index < palleteElement.length; index += 1) {
+    let rgb = localStorage.getItem(`cor${index}`);
+    palleteElement[index].style.backgroundColor = rgb;
+}
+
