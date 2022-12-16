@@ -129,3 +129,17 @@ for(let index = 0; index < pixel.length; index+=1){
         attPixelBoard();
     })
 }
+
+
+//Requisito 11
+const buttonClear = document.createElement('button');
+buttonClear.id = 'clear-board';
+buttonClear.innerHTML = 'Limpar';
+buttons.appendChild(buttonClear);
+    buttonClear.addEventListener('click', (target)=>{
+        for(let index = 0; index < pixel.length; index+=1){    
+        pixel[index].style.backgroundColor = 'white';
+        attPixelBoard();
+
+    }})
+
