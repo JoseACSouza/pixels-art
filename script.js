@@ -40,3 +40,21 @@ palleteElement[3].style.backgroundColor = 'red';
 //Requisito 3
 palleteElement[0].style.backgroundColor = 'black';
 
+
+//Requisito 4
+const buttons = document.getElementById('buttons');
+buttons.style.width='15%';
+buttons.style.margin='12px auto';
+const buttonRandomColor = document.createElement('button');
+buttonRandomColor.id = 'button-random-color';
+buttonRandomColor.innerHTML = 'Cores aleatórias';
+buttonRandomColor.style.marginRight ='10%';
+buttons.appendChild(buttonRandomColor);
+buttonRandomColor.addEventListener('click', () => {
+    for (let index = 1; index < palleteElement.length; index += 1) {
+        let randomRGB = `rgb(${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)})`;
+        localStorage.setItem(`cor${index}`, randomRGB);
+        palleteElement[index].style.backgroundColor = randomRGB;
+    }
+})
+
