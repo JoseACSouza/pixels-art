@@ -114,3 +114,18 @@ for(let index = 0; index < palleteElement.length; index+=1){
     }
 })
 }
+
+// Requisito 10
+const pixel = document.getElementsByClassName('pixel');
+for(let index = 0; index < pixel.length; index+=1){
+    pixel[index].addEventListener('click', (target)=>{
+        const selectedColor = document.getElementsByClassName('selected');
+        if((target.path[0].style.backgroundColor === 'white')&&(selectedColor.length != 0)){
+            target.path[0].style.backgroundColor = selectedColor[0].style.backgroundColor;
+        }else if (selectedColor.length == 0){
+            target.path[0].style.backgroundColor = 'white';
+        } 
+        else {target.path[0].style.backgroundColor = selectedColor[0].style.backgroundColor;}
+        attPixelBoard();
+    })
+}
