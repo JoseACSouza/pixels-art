@@ -9,3 +9,13 @@ const titleFunction = () => {
 }
 titleFunction();
 
+//Requisito 2
+const palleteSection = document.getElementById('pallete');
+const addPallete = document.createElement('div');
+addPallete.id = 'color-palette';
+palleteSection.appendChild(addPallete);
+const pallete = document.getElementById('color-palette');
+pallete.style.width = '19%';
+pallete.style.margin = '12px auto';
+
+;
