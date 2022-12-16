@@ -96,3 +96,6 @@ for (let index = 0; index < size; index += 1) {
     }
 }
 
+//Requisito 8
+const initialColor = document.getElementsByClassName('color')[0];
+initialColor.classList.add('selected');
