@@ -1,3 +1,4 @@
+window.onload = () => {
 //Requisito 1
 const titleFunction = () => {
     const addtitle = document.getElementsByTagName('header')[0];
@@ -155,7 +156,7 @@ const attPixelBoard = () => {
     localStorage.setItem('pixelBoard', JSON.stringify(pixelSaved));
 }
 
-
 for (let index = 0; index < saveBoard.length; index += 1) {
     saveBoard[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index];
+}
 }
