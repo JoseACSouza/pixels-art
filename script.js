@@ -1,4 +1,4 @@
-window.onload = () => {
+// window.onload = () => {
 //Requisito 1
 const titleFunction = () => {
     const addtitle = document.getElementsByTagName('header')[0];
@@ -42,7 +42,7 @@ palleteElement[3].style.backgroundColor = 'rgb(255, 0, 0)';
 palleteElement[0].style.backgroundColor = 'rgb(0, 0, 0)';
 let colorPalette = [];
 if( localStorage.getItem('status') == "0"){
-
+    colorPalette[0]= 'black';
 }else {    
     for(let index = 0; index < palleteElement.length; index+=1){
     colorPalette.push(palleteElement[index].style.backgroundColor);
@@ -51,7 +51,7 @@ if( localStorage.getItem('status') == "0"){
 
 //Requisito 4
 const buttons = document.getElementById('buttons');
-buttons.style.width='15%';
+buttons.style.width='18%';
 buttons.style.margin='12px auto';
 const buttonRandomColor = document.createElement('button');
 buttonRandomColor.id = 'button-random-color';
@@ -75,17 +75,22 @@ for (let index = 0; index < palleteElement.length; index += 1) {
 
 
 //Requisito 6 e 7
-const addBoard = document.getElementById('table');
 let size = 5;
+if (localStorage.getItem('status') ==0){
+    size = JSON.parse(localStorage.getItem('boardSize'));
+        localStorage.setItem('colorPalette', JSON.stringify(colorPalette));
+}
+console.log(size);
+const addBoard = document.getElementById('table');
 const pixelBoard = document.createElement('div');
 addBoard.appendChild(pixelBoard);
 pixelBoard.id = 'pixel-board';
 pixelBoard.style.backgroundColor = 'white';
-pixelBoard.style.width = '210px';
-pixelBoard.style.height = '210px';
+pixelBoard.style.width = `${size*42}px`;
+pixelBoard.style.height = `${size*42}px`;
 pixelBoard.style.margin = '0 auto';
+pixelBoard.style.marginBottom = '10px';
 pixelBoard.style.border = '1px solid black';
-
 
 for (let index = 0; index < size; index += 1) {
     const line = document.createElement('div');
@@ -104,7 +109,6 @@ for (let index = 0; index < size; index += 1) {
         pixel.style.backgroundColor = 'white';
     }
 }
-
 //Requisito 8
 const initialColor = document.getElementsByClassName('color')[0];
 initialColor.classList.add('selected');
@@ -158,12 +162,51 @@ const attPixelBoard = () => {
     }
     localStorage.setItem('pixelBoard', JSON.stringify(pixelSaved));
 }
+
 if (localStorage.getItem('status') == "0") {
 
 } else {attPixelBoard();}
 for (let index = 0; index < pixel.length; index += 1) {
     pixel[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index];
 }
+
+// Requisito 13
+const inputBoardSize = document.createElement('input');
+inputBoardSize.type = 'number';
+inputBoardSize.min = '1';
+inputBoardSize.id = 'board-size';
+inputBoardSize.style.width = '35px';
+inputBoardSize.style.marginLeft = '33%';
+inputBoardSize.style.marginTop = '12px';
+const generateBoard = document.createElement('button');
+generateBoard.id = 'generate-board';
+generateBoard.innerHTML = 'VQV';
+buttons.appendChild(inputBoardSize);
+buttons.appendChild(generateBoard);
+
+generateBoard.addEventListener("click", ()=>{
+    const input = document.getElementById('board-size');
+    if (input.value <= 0 ){
+        alert('Board inválido!');
+    } else if (input.value <=5){
+        localStorage.setItem('boardSize', 5);
+        location.reload();
+    } else if (input.value >=50){
+        localStorage.setItem('boardSize', 50);
+        location.reload();
+    }else { size = input.value;
+        localStorage.setItem('boardSize', JSON.stringify(size));
+        location.reload();
+    }
+    for (let index = 0; index < pixel.length; index += 1) {
+        pixel[index].style.backgroundColor = 'white';
+        attPixelBoard();
+
+    }
+
+})
+
+//Define quando será utilizado o valor inicial
 let status = 0;
 localStorage.setItem('status', status);
-}
+// }
