@@ -1,5 +1,7 @@
 // window.onload = () => {
 //Requisito 1
+const getBody = document.getElementsByTagName('body')[0];
+getBody.style.backgroundImage ='url(./bg.png)';
 const titleFunction = () => {
     const addtitle = document.getElementsByTagName('header')[0];
     const title = document.createElement('h1');
