@@ -75,12 +75,13 @@ for (let index = 0; index < palleteElement.length; index += 1) {
 
 
 //Requisito 6 e 7
+console.log(localStorage.getItem('status2'));
 let size = 5;
-if (localStorage.getItem('status') ==0){
+if (localStorage.getItem('status2') ==1){
     size = JSON.parse(localStorage.getItem('boardSize'));
         localStorage.setItem('colorPalette', JSON.stringify(colorPalette));
 }
-console.log(size);
+console.log(localStorage.getItem('status2'));
 const addBoard = document.getElementById('table');
 const pixelBoard = document.createElement('div');
 addBoard.appendChild(pixelBoard);
@@ -203,10 +204,12 @@ generateBoard.addEventListener("click", ()=>{
         attPixelBoard();
 
     }
-
+    status2 = 1;
+    localStorage.setItem('status2', status2);
 })
 
 //Define quando será utilizado o valor inicial
 let status = 0;
+let status2 = 0;
 localStorage.setItem('status', status);
 // }
